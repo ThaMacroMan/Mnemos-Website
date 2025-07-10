@@ -1,0 +1,331 @@
+import Layout from "@/components/Layout";
+import Head from "next/head";
+
+export default function GettingStartedWithAITools({ children }) {
+  return (
+    <Layout>
+      <Head>
+        <title>Let's Build Your First App Together! | Mnemos</title>
+        <meta
+          name="description"
+          content="Don't worry - we'll walk you through every single step. By the end of this guide, you'll have a working Cardano app!"
+        />
+      </Head>
+      <div className="prose prose-invert max-w-none">
+        {/* Progress Tracker */}
+        <div className="not-prose mb-12">
+          <div className="bg-gradient-to-r from-emerald-900/30 to-sky-900/30 border border-emerald-700/50 rounded-2xl p-8 text-center">
+            <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+              🎯 Your Mission Today
+            </h2>
+            <p className="text-lg text-gray-300 mb-6">
+              Build your first Cardano app in{" "}
+              <strong className="text-emerald-400">30 minutes</strong>. No prior
+              experience needed - we'll guide you every step of the way!
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <div className="flex items-center gap-2 bg-emerald-900/50 px-4 py-2 rounded-full">
+                <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
+                <span>Step 1: Pick Your AI Tool (5 min)</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-700/50 px-4 py-2 rounded-full">
+                <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
+                <span>Step 2: Set Up Project (10 min)</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-700/50 px-4 py-2 rounded-full">
+                <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
+                <span>Step 3: Add Cardano Magic (10 min)</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-700/50 px-4 py-2 rounded-full">
+                <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
+                <span>Step 4: Ask AI to Build (5 min)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        {children}
+      </div>
+    </Layout>
+  );
+}
+
+# Let's Build Your First App Together! 🚀
+
+Hey there! 👋 Ready to become a blockchain builder? Don't worry if you've never coded before - that's exactly who this guide is for.
+
+By the time you finish reading this (about 30 minutes), you'll have:
+
+- ✅ A working Cardano app running on your computer
+- ✅ A wallet connection that actually works
+- ✅ The confidence to build bigger things
+
+**Promise:** If you can follow a recipe, you can follow this guide. Let's go! 🎉
+
+---
+
+## 🤖 Step 1: Pick Your AI Sidekick (5 minutes)
+
+Think of these as your coding assistants. They write the code, you tell them what to build.
+
+### 🌟 Option A: Cursor (Perfect for Beginners)
+
+**What it is:** Like Microsoft Word, but for building apps. Has an AI that writes code for you.
+
+**Why we love it:**
+
+- Press one button, describe what you want, get working code
+- Free plan gives you 2000 AI requests per month (plenty to start)
+- Works exactly like other text editors you might know
+
+**How to get it:**
+
+1. 🌐 Go to [cursor.sh](https://cursor.sh)
+2. 🖱️ Click the big **"Download"** button
+3. 📱 Install it like any other app
+4. 🎯 Open it and sign up (takes 2 minutes)
+
+**Test it works:** Press `Cmd+K` (Mac) or `Ctrl+K` (Windows) and type "hello world". If a box pops up, you're ready! 🎉
+
+### 🚀 Option B: Windsurf (For the Adventurous)
+
+**What it is:** An AI that can actually run commands and manage your entire project.
+
+**Why it's cool:**
+
+- The AI can install things and set up projects automatically
+- Great for when you want to say "build me a complete app" and walk away
+
+**How to get it:**
+
+1. 🌐 Visit [codeium.com/windsurf](https://codeium.com/windsurf)
+2. 🖱️ Download and install
+3. 🎯 Sign up and you're ready to go
+
+### 💬 Option C: ChatGPT + Any Text Editor
+
+**What it is:** The classic copy-paste approach with the world's most famous AI.
+
+**Perfect if:**
+
+- You already have VS Code or another editor
+- You prefer to control every step
+- You want to understand what's happening
+
+**How to use it:**
+
+1. 🌐 Go to [chat.openai.com](https://chat.openai.com)
+2. 💬 Ask it to write Cardano code
+3. 📋 Copy the code into your editor
+
+---
+
+## 🏗️ Step 2: Create Your First Project (10 minutes)
+
+Time to build something! We'll create a website that can talk to Cardano wallets.
+
+### The Magic Command (Works Every Time)
+
+1. **Open your AI tool** (we'll use Cursor in this example)
+2. **Open the terminal:** Press `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows), then type "Terminal"
+3. **Copy this magic spell:**
+   ```bash
+   npx create-next-app@latest my-first-cardano-app --typescript --tailwind --app
+   ```
+4. **Paste it and press Enter**
+5. **Wait 2-3 minutes** while it downloads everything (perfect time for coffee! ☕)
+
+**What just happened?** You created a professional website framework. It's like getting a house with all the plumbing and electricity already installed.
+
+### Start Your App
+
+1. **Navigate to your project:**
+   ```bash
+   cd my-first-cardano-app
+   ```
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+3. **Open your browser** and go to: `http://localhost:3000`
+
+🎉 **Congratulations!** You just built a website! It's running on your computer right now.
+
+---
+
+## 🔗 Step 3: Add Cardano Superpowers (10 minutes)
+
+Now let's give your app the ability to connect to Cardano wallets. This is where the magic happens!
+
+### Install the Cardano Toolkit
+
+**In your terminal, type:**
+
+```bash
+npm install @meshsdk/core @meshsdk/react
+```
+
+**Wait 30 seconds** and you're done! Your app now has Cardano superpowers. 🦸‍♂️
+
+### Add a Wallet Connector (Copy-Paste Magic)
+
+1. **Find the file** `src/app/page.tsx` in your project
+2. **Delete everything** in that file (don't worry, we're replacing it with something better)
+3. **Copy and paste this code:**
+
+```jsx
+"use client";
+import { CardanoWallet } from "@meshsdk/react";
+
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="container mx-auto px-4 py-16 text-center">
+        <h1 className="text-6xl font-bold mb-8 bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">
+          My First Cardano App! 🚀
+        </h1>
+
+        <p className="text-2xl text-gray-300 mb-12 max-w-2xl mx-auto">
+          I built this with AI in 30 minutes. No programming experience needed!
+        </p>
+
+        <div className="bg-gray-800 border border-gray-700 rounded-2xl p-8 max-w-md mx-auto">
+          <h2 className="text-2xl font-bold mb-6 text-emerald-400">
+            Connect Your Wallet
+          </h2>
+          <CardanoWallet isDark={true} />
+          <p className="text-sm text-gray-400 mt-4">
+            ✨ This actually works! Try connecting your Eternl or Nami wallet.
+          </p>
+        </div>
+
+        <div className="mt-12 text-gray-400">
+          <p>🎉 You just built a blockchain app!</p>
+          <p>Time to build something bigger...</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+4. **Save the file** (`Cmd+S` or `Ctrl+S`)
+5. **Check your browser** - it should automatically refresh
+
+🔮 **Magic Moment:** You now have a working Cardano wallet connector! If you have a Cardano wallet installed, you can actually connect it.
+
+---
+
+## 🤖 Step 4: Ask AI to Build More (5 minutes)
+
+This is where it gets fun. Let's ask AI to add more features to your app.
+
+### Try This Prompt
+
+**In Cursor, press** `Cmd+K` (or `Ctrl+K`) and type:
+
+```
+Add a button that shows the user's ADA balance when they connect their wallet.
+Make it look nice and show a loading state while fetching the balance.
+If there's an error, show a friendly message.
+```
+
+**Press Enter** and watch the AI write the code for you! 🤯
+
+### More Ideas to Try
+
+Once you see how easy it is, try these prompts:
+
+- "Add a button to send ADA to another address"
+- "Show the user's NFT collection in a nice grid"
+- "Add a dark/light mode toggle"
+- "Make the design look more professional"
+
+---
+
+## 🎉 What You Just Accomplished
+
+Look at what you built in 30 minutes:
+
+- ✅ **A professional website** with modern design
+- ✅ **Cardano wallet integration** that actually works
+- ✅ **AI-powered development** workflow
+- ✅ **The foundation** for bigger projects
+
+**Most importantly:** You proved to yourself that you can build blockchain apps! 🚀
+
+---
+
+## 🚀 What's Next?
+
+Ready to build something bigger? Here are your next adventures:
+
+### 🎯 Quick Wins (15-30 minutes each)
+
+- **[Send Your First Transaction](/guides/hello-world-dapp)** - Move some ADA around
+- **[Build an NFT Gallery](/guides/nft-gallery)** - Show off digital art
+- **[Create a Token Swap](/guides/token-swap)** - Build a mini DEX
+
+### 🏗️ Bigger Projects (1-2 hours each)
+
+- **[NFT Marketplace](/guides/nft-marketplace)** - Buy and sell digital assets
+- **[DAO Voting System](/guides/dao-voting)** - Democratic decision making
+- **[DeFi Staking Pool](/guides/staking-pool)** - Earn rewards on crypto
+
+### 🤝 Join the Community
+
+- **[Discord](https://discord.gg/meshjs)** - Get help and share your creations
+- **[YouTube](https://youtube.com/@meshjs)** - Watch live coding sessions
+- **[GitHub](https://github.com/meshjs)** - See example projects
+
+---
+
+## 🆘 Need Help?
+
+**Stuck on something?** That's totally normal! Here's what to do:
+
+### 🔧 Common Issues & Quick Fixes
+
+**"My terminal says command not found"**
+
+- Make sure you have Node.js installed: [nodejs.org](https://nodejs.org)
+- Restart your terminal and try again
+
+**"The wallet won't connect"**
+
+- Make sure you have a Cardano wallet installed (Eternl, Nami, or Flint)
+- Try refreshing the page
+
+**"The code doesn't work"**
+
+- Copy the error message
+- Paste it into ChatGPT with: "How do I fix this error in my Cardano app?"
+- Follow the AI's suggestions
+
+### 💬 Get Human Help
+
+**Still stuck?** Real humans are here to help:
+
+1. **Join our Discord:** [discord.gg/meshjs](https://discord.gg/meshjs)
+2. **Post in #help-beginners** with:
+   - What you were trying to do
+   - What error you got
+   - A screenshot if possible
+3. **Get help within hours** (usually minutes!)
+
+---
+
+## 🎯 Your Next 30 Minutes
+
+You've proven you can build blockchain apps. Here's what we recommend for your next session:
+
+1. **[Build a Hello World DApp](/guides/hello-world-dapp)** - Send your first transaction
+2. **Experiment with AI prompts** - Ask it to add features to your app
+3. **Share your success** - Post a screenshot in our Discord!
+
+Remember: **Every expert was once a beginner.** The difference is that now, with AI as your co-pilot, the journey from beginner to builder is measured in hours, not years.
+
+You've got this! 🚀
+
+---
+
+> **What's Next?** Ready to send your first transaction? Try our [Hello World DApp Guide](/guides/hello-world-dapp) and move some ADA around!

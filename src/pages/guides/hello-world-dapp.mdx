@@ -1,0 +1,635 @@
+import Layout from "@/components/Layout";
+import Head from "next/head";
+
+export default function HelloWorldDApp({ children }) {
+  return (
+    <Layout>
+      <Head>
+        <title>Your First Blockchain Transaction! | Mnemos</title>
+        <meta
+          name="description"
+          content="Send your first Cardano transaction in 15 minutes. No blockchain experience needed - just follow along!"
+        />
+      </Head>
+      <div className="prose prose-invert max-w-none">
+        {/* Progress Tracker */}
+        <div className="not-prose mb-12">
+          <div className="bg-gradient-to-r from-emerald-900/30 to-sky-900/30 border border-emerald-700/50 rounded-2xl p-8 text-center">
+            <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+              🎯 Your First Transaction!
+            </h2>
+            <p className="text-lg text-gray-300 mb-6">
+              You're about to send your first transaction on the Cardano
+              blockchain!
+              <strong className="text-emerald-400">
+                {" "}
+                This is a big moment!
+              </strong>
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <div className="flex items-center gap-2 bg-emerald-900/50 px-4 py-2 rounded-full">
+                <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
+                <span>Connect Wallet (2 min)</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-700/50 px-4 py-2 rounded-full">
+                <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
+                <span>Check Balance (3 min)</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-700/50 px-4 py-2 rounded-full">
+                <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
+                <span>Send Transaction (5 min)</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-700/50 px-4 py-2 rounded-full">
+                <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
+                <span>Celebrate! (5 min)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        {children}
+      </div>
+    </Layout>
+  );
+}
+
+# Your First Blockchain Transaction! 🚀
+
+Hey there, future blockchain wizard! 🧙‍♂️ Ready to send your first transaction on Cardano?
+
+**This is a big moment!** You're about to interact with a global, decentralized network that never sleeps. Millions of people around the world use this same blockchain every day.
+
+Don't worry if you feel nervous - that's totally normal! By the end of this guide (15 minutes), you'll have:
+
+- ✅ Sent a real transaction on Cardano
+- ✅ Seen your transaction appear on the blockchain
+- ✅ Earned serious bragging rights 😎
+
+**Promise:** If you can send a text message, you can send a blockchain transaction. Let's go! 🎉
+
+---
+
+## 🎯 What We're Building
+
+A simple app that does these amazing things:
+
+- 🔗 **Connects to your Cardano wallet** (like linking your bank account)
+- 💰 **Shows your ADA balance** (how much crypto you have)
+- 📨 **Sends a "Hello World" transaction** (your first message to the blockchain)
+- 📜 **Shows your transaction history** (proof it really happened!)
+
+**Fun fact:** Once your transaction is on the blockchain, it's there forever. Your kids' kids will be able to see it! 🌟
+
+---
+
+## 🏗️ Step 1: Set Up Your Project (2 minutes)
+
+Time to create your app! This is like setting up a new phone - just follow the steps.
+
+### The Magic Commands (Copy-Paste These)
+
+1. **Open Cursor** (or your AI coding tool)
+2. **Press** `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows) and type "Terminal"
+3. **Copy and paste these commands one by one:**
+
+```bash
+npx create-next-app@latest hello-world-dapp --typescript --tailwind --app
+```
+
+**Wait for it to finish** (grab a coffee! ☕)
+
+```bash
+cd hello-world-dapp
+```
+
+```bash
+npm install @meshsdk/core @meshsdk/react
+```
+
+**Wait again** (almost done!)
+
+```bash
+npm run dev
+```
+
+4. **Open** http://localhost:3000 in your browser
+
+🎉 **Magic Moment:** You just created a website! It's running on your computer right now.
+
+✅ **Checkpoint:** You should see a Next.js welcome page. If you do, you're crushing it!
+
+**Stuck?** No worries! Common fixes:
+
+- Make sure you have Node.js installed: [nodejs.org](https://nodejs.org)
+- Try closing and reopening your terminal
+- Still stuck? Ask in our [Discord](https://discord.gg/meshjs) - we're here to help!
+
+---
+
+## 🔗 Step 2: Connect Your Wallet (3 minutes)
+
+Now let's connect your wallet to your app. This is like logging into your bank account, but for crypto!
+
+### Copy-Paste the Magic Code
+
+1. **Find the file** `src/app/page.tsx` in Cursor
+2. **Delete everything** in that file (don't worry, we're replacing it with something better!)
+3. **Paste this code:**
+
+```jsx
+"use client";
+import { CardanoWallet, useWallet } from "@meshsdk/react";
+
+export default function Home() {
+  const { connected, wallet } = useWallet();
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-white p-8">
+      <div className="max-w-2xl mx-auto">
+        <h1 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">
+          🚀 My First Cardano DApp
+        </h1>
+
+        <div className="bg-gray-800 rounded-2xl p-8 mb-6 border border-gray-700">
+          <h2 className="text-2xl font-semibold mb-4 text-emerald-400">
+            Step 1: Connect Your Wallet
+          </h2>
+          <p className="text-gray-300 mb-6">
+            This connects your Cardano wallet to your app. It's like logging in,
+            but for blockchain!
+          </p>
+          <CardanoWallet />
+        </div>
+
+        {connected && (
+          <div className="bg-gradient-to-r from-emerald-900/50 to-green-900/50 border border-emerald-700 rounded-2xl p-8 text-center">
+            <div className="text-6xl mb-4">🎉</div>
+            <h3 className="text-2xl font-bold text-emerald-400 mb-2">
+              Wallet Connected!
+            </h3>
+            <p className="text-emerald-200 text-lg">
+              Amazing! Your wallet is now connected to your DApp. You're
+              officially interacting with the blockchain!
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+```
+
+4. **Save the file** (`Cmd+S` or `Ctrl+S`)
+5. **Check your browser** - it should automatically refresh
+
+✅ **Checkpoint:** You should see a "Connect Wallet" button. Click it and connect your Eternl, Nami, or other Cardano wallet.
+
+**Don't have a wallet?** No problem! Download one of these:
+
+- [Eternl](https://eternl.io) - Most popular
+- [Nami](https://namiwallet.io) - Super simple
+- [Flint](https://flint-wallet.com) - Great for beginners
+
+---
+
+## 💰 Step 3: Show Your ADA Balance (3 minutes)
+
+Now let's see how much ADA you have! This is like checking your bank account balance.
+
+### Let AI Write the Code for You
+
+1. **In Cursor, press** `Cmd+K` (or `Ctrl+K`)
+2. **Type this prompt:**
+   ```
+   Add a section that shows the user's ADA balance when their wallet is connected.
+   Use the MeshJS useWallet hook to get the balance. Make it look nice with big numbers
+   and a loading state. Add some encouraging text about their balance.
+   ```
+3. **Press Enter and wait for the magic**
+4. **Review the AI's suggestion**
+5. **Click "Accept" if it looks good**
+
+### Or Copy-Paste This Working Code
+
+If AI doesn't work perfectly, replace your entire file with this:
+
+```jsx
+"use client";
+import { CardanoWallet, useWallet } from "@meshsdk/react";
+import { useEffect, useState } from "react";
+
+export default function Home() {
+  const { connected, wallet } = useWallet();
+  const [balance, setBalance] = useState("0");
+  const [loading, setLoading] = useState(false);
+
+  const getBalance = async () => {
+    if (wallet) {
+      setLoading(true);
+      try {
+        const balance = await wallet.getBalance();
+        const adaBalance = parseInt(balance[0].quantity) / 1000000;
+        setBalance(adaBalance.toFixed(2));
+      } catch (error) {
+        console.error("Error getting balance:", error);
+        setBalance("Error loading balance");
+      }
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (connected) {
+      getBalance();
+    }
+  }, [connected]);
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-white p-8">
+      <div className="max-w-2xl mx-auto">
+        <h1 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">
+          🚀 My First Cardano DApp
+        </h1>
+
+        <div className="bg-gray-800 rounded-2xl p-8 mb-6 border border-gray-700">
+          <h2 className="text-2xl font-semibold mb-4 text-emerald-400">
+            Step 1: Connect Your Wallet
+          </h2>
+          <p className="text-gray-300 mb-6">
+            This connects your Cardano wallet to your app. It's like logging in,
+            but for blockchain!
+          </p>
+          <CardanoWallet />
+        </div>
+
+        {connected && (
+          <>
+            <div className="bg-gradient-to-r from-emerald-900/50 to-green-900/50 border border-emerald-700 rounded-2xl p-8 mb-6">
+              <div className="text-center mb-6">
+                <div className="text-6xl mb-4">🎉</div>
+                <h3 className="text-2xl font-bold text-emerald-400 mb-2">
+                  Wallet Connected!
+                </h3>
+                <p className="text-emerald-200">
+                  You're now connected to the Cardano blockchain!
+                </p>
+              </div>
+
+              <div className="bg-gray-800/50 rounded-xl p-6 text-center">
+                <h4 className="text-lg font-semibold mb-2 text-gray-300">
+                  Your ADA Balance
+                </h4>
+                <div className="text-4xl font-bold text-emerald-400 mb-2">
+                  {loading ? "..." : `${balance} ADA`}
+                </div>
+                <p className="text-gray-400 text-sm">
+                  {loading
+                    ? "Loading your balance..."
+                    : "This is your current ADA balance!"}
+                </p>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+```
+
+✅ **Checkpoint:** You should now see your ADA balance when connected!
+
+**Cool, right?** You just queried the Cardano blockchain and got real data back. You're already doing blockchain development! 🤯
+
+---
+
+## 📨 Step 4: Send Your First Transaction (5 minutes)
+
+**This is the big moment!** You're about to send your first transaction on the Cardano blockchain.
+
+**Don't worry about the cost** - we're just sending 1 ADA to yourself, so you'll get it right back (minus a tiny fee of about 0.17 ADA).
+
+### Ask AI to Add Transaction Magic
+
+1. **Press** `Cmd+K` in Cursor
+2. **Type this prompt:**
+
+   ```
+   Add a button that sends 1 ADA to the user's own wallet address with the message "Hello World from Mnemos!".
+   Show a loading state while sending, a success message with the transaction hash,
+   and handle errors gracefully. Make it look exciting with good colors and animations.
+   ```
+
+3. **Press Enter and watch AI work its magic**
+4. **Review and accept the code**
+
+### Or Use This Complete Working Code
+
+Replace your entire file with this battle-tested version:
+
+```jsx
+"use client";
+import { CardanoWallet, useWallet } from "@meshsdk/react";
+import { useEffect, useState } from "react";
+
+export default function Home() {
+  const { connected, wallet } = useWallet();
+  const [balance, setBalance] = useState("0");
+  const [loading, setLoading] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [txHash, setTxHash] = useState("");
+  const [error, setError] = useState("");
+
+  const getBalance = async () => {
+    if (wallet) {
+      setLoading(true);
+      try {
+        const balance = await wallet.getBalance();
+        const adaBalance = parseInt(balance[0].quantity) / 1000000;
+        setBalance(adaBalance.toFixed(2));
+      } catch (error) {
+        console.error("Error getting balance:", error);
+        setBalance("Error loading balance");
+      }
+      setLoading(false);
+    }
+  };
+
+  const sendTransaction = async () => {
+    if (!wallet) return;
+
+    setSending(true);
+    setError("");
+    setTxHash("");
+
+    try {
+      const addresses = await wallet.getUsedAddresses();
+      const address = addresses[0];
+
+      const tx = {
+        recipients: [
+          {
+            address: address,
+            amount: "1000000", // 1 ADA in lovelace
+          },
+        ],
+        metadata: {
+          1337: "Hello World from Mnemos!",
+        },
+      };
+
+      const unsignedTx = await wallet.buildTx(tx);
+      const signedTx = await wallet.signTx(unsignedTx);
+      const txHash = await wallet.submitTx(signedTx);
+
+      setTxHash(txHash);
+
+      // Refresh balance after transaction
+      setTimeout(() => {
+        getBalance();
+      }, 3000);
+    } catch (error) {
+      console.error("Transaction error:", error);
+      setError(
+        "Transaction failed. Make sure you have enough ADA for the transaction fee (about 0.17 ADA)."
+      );
+    }
+
+    setSending(false);
+  };
+
+  useEffect(() => {
+    if (connected) {
+      getBalance();
+    }
+  }, [connected]);
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-white p-8">
+      <div className="max-w-2xl mx-auto">
+        <h1 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">
+          🚀 My First Cardano DApp
+        </h1>
+
+        <div className="bg-gray-800 rounded-2xl p-8 mb-6 border border-gray-700">
+          <h2 className="text-2xl font-semibold mb-4 text-emerald-400">
+            Step 1: Connect Your Wallet
+          </h2>
+          <p className="text-gray-300 mb-6">
+            This connects your Cardano wallet to your app. It's like logging in,
+            but for blockchain!
+          </p>
+          <CardanoWallet />
+        </div>
+
+        {connected && (
+          <>
+            <div className="bg-gradient-to-r from-emerald-900/50 to-green-900/50 border border-emerald-700 rounded-2xl p-8 mb-6">
+              <div className="text-center mb-6">
+                <div className="text-6xl mb-4">🎉</div>
+                <h3 className="text-2xl font-bold text-emerald-400 mb-2">
+                  Wallet Connected!
+                </h3>
+                <p className="text-emerald-200">
+                  You're now connected to the Cardano blockchain!
+                </p>
+              </div>
+
+              <div className="bg-gray-800/50 rounded-xl p-6 text-center">
+                <h4 className="text-lg font-semibold mb-2 text-gray-300">
+                  Your ADA Balance
+                </h4>
+                <div className="text-4xl font-bold text-emerald-400 mb-2">
+                  {loading ? "..." : `${balance} ADA`}
+                </div>
+                <p className="text-gray-400 text-sm">
+                  {loading
+                    ? "Loading your balance..."
+                    : "This is your current ADA balance!"}
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-purple-900/50 to-pink-900/50 border border-purple-700 rounded-2xl p-8">
+              <div className="text-center mb-6">
+                <div className="text-6xl mb-4">🚀</div>
+                <h3 className="text-2xl font-bold text-purple-400 mb-2">
+                  Send Your First Transaction
+                </h3>
+                <p className="text-purple-200 mb-4">
+                  This will send 1 ADA to yourself with a "Hello World" message!
+                </p>
+                <p className="text-sm text-gray-400">
+                  Don't worry - you'll get your ADA back (minus a small network
+                  fee)
+                </p>
+              </div>
+
+              <div className="text-center">
+                <button
+                  onClick={sendTransaction}
+                  disabled={sending || parseFloat(balance) < 1.2}
+                  className={`px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
+                    sending || parseFloat(balance) < 1.2
+                      ? "bg-gray-600 cursor-not-allowed"
+                      : "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 hover:scale-105"
+                  }`}
+                >
+                  {sending ? "Sending Transaction..." : "Send Hello World! 🌍"}
+                </button>
+
+                {parseFloat(balance) < 1.2 && (
+                  <p className="text-red-400 text-sm mt-2">
+                    You need at least 1.2 ADA to send this transaction (1 ADA +
+                    network fee)
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {txHash && (
+              <div className="bg-gradient-to-r from-green-900/50 to-emerald-900/50 border border-green-700 rounded-2xl p-8 mt-6 text-center">
+                <div className="text-6xl mb-4">🎊</div>
+                <h3 className="text-2xl font-bold text-green-400 mb-4">
+                  Transaction Sent Successfully!
+                </h3>
+                <p className="text-green-200 mb-4">
+                  Congratulations! You just sent your first transaction on the
+                  Cardano blockchain!
+                </p>
+                <div className="bg-gray-800/50 rounded-xl p-4 mb-4">
+                  <p className="text-sm text-gray-400 mb-2">
+                    Transaction Hash:
+                  </p>
+                  <p className="text-green-400 font-mono text-sm break-all">
+                    {txHash}
+                  </p>
+                </div>
+                <p className="text-sm text-gray-400">
+                  This transaction is now permanently recorded on the Cardano
+                  blockchain! 🌟
+                </p>
+              </div>
+            )}
+
+            {error && (
+              <div className="bg-red-900/50 border border-red-700 rounded-2xl p-6 mt-6 text-center">
+                <div className="text-4xl mb-2">⚠️</div>
+                <h3 className="text-xl font-bold text-red-400 mb-2">
+                  Transaction Failed
+                </h3>
+                <p className="text-red-200 text-sm">{error}</p>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+```
+
+✅ **Checkpoint:** You should now see a "Send Hello World!" button. Click it to send your first transaction!
+
+**This is it!** You're about to make history (your personal blockchain history). 🌟
+
+---
+
+## 🎊 Step 5: Celebrate Your Success! (5 minutes)
+
+**YOU DID IT!** 🎉🎉🎉
+
+If you successfully sent that transaction, you just:
+
+- ✅ **Interacted with a global blockchain** used by millions of people
+- ✅ **Sent a transaction** that's now permanently recorded forever
+- ✅ **Built a real DApp** that connects to wallets and sends transactions
+- ✅ **Joined the ranks** of blockchain developers worldwide
+
+**This is a big deal!** Most people have never done what you just did. You should be proud! 🏆
+
+### What Just Happened?
+
+Your transaction is now:
+
+- 📝 **Recorded forever** on the Cardano blockchain
+- 🌍 **Visible to anyone** who knows your transaction hash
+- 🔒 **Cryptographically secure** and impossible to fake
+- 💎 **Part of blockchain history** that will outlast us all
+
+### Share Your Success!
+
+1. **Take a screenshot** of your successful transaction
+2. **Post it in our Discord:** [discord.gg/meshjs](https://discord.gg/meshjs)
+3. **Tell your friends** you just sent a blockchain transaction
+4. **Update your LinkedIn** - you're now a blockchain developer! 😎
+
+---
+
+## 🚀 What's Next?
+
+You've tasted the power of blockchain development. Here's what you can build next:
+
+### 🎯 Quick Wins (30 minutes each)
+
+- **[Create Your First NFT](/guides/nft-collection)** - Turn photos into digital collectibles
+- **[Build a Token Swap](/guides/token-swap)** - Create your own mini exchange
+- **[Make a DAO Voting System](/guides/dao-voting)** - Democratic decision making
+
+### 🏗️ Bigger Projects (1-2 hours each)
+
+- **[NFT Marketplace](/guides/nft-marketplace)** - Buy and sell digital assets
+- **[DeFi Lending Platform](/guides/defi-lending)** - Earn interest on crypto
+- **[Gaming DApp](/guides/gaming-dapp)** - Blockchain-based games
+
+### 🤝 Join the Community
+
+- **[Discord](https://discord.gg/meshjs)** - Show off your projects and get help
+- **[YouTube](https://youtube.com/@meshjs)** - Watch live coding sessions
+- **[GitHub](https://github.com/meshjs)** - Contribute to open source
+
+---
+
+## 🆘 Troubleshooting
+
+**Transaction failed?** Here are common fixes:
+
+### "Insufficient funds"
+
+- Make sure you have at least 1.2 ADA (1 ADA + network fee)
+- Try sending 0.5 ADA instead
+
+### "Wallet not connected"
+
+- Refresh the page and reconnect your wallet
+- Make sure your wallet is unlocked
+
+### "Network error"
+
+- Check your internet connection
+- Try again in a few minutes
+
+### Still stuck?
+
+1. **Copy the error message**
+2. **Join our Discord:** [discord.gg/meshjs](https://discord.gg/meshjs)
+3. **Post in #help-beginners** with your error
+4. **Get help from real humans** who've been there before
+
+---
+
+## 🎯 You're Now a Blockchain Developer!
+
+**Seriously!** You just:
+
+- Built a DApp from scratch
+- Connected to a wallet
+- Queried blockchain data
+- Sent a transaction
+
+That's more blockchain development than 99% of people have ever done. You're not just learning about blockchain - you're actually building on it! 🚀
+
+**Next up:** Ready to create something even cooler? Try [building your first NFT](/guides/nft-collection) and turn your photos into digital collectibles!
+
+---
+
+> **Congratulations!** You've just sent your first transaction on the Cardano blockchain. This is a moment worth celebrating - you're now part of the decentralized future! 🌟
