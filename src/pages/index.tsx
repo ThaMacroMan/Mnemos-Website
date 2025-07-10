@@ -256,7 +256,7 @@ export default function Home() {
               icon: "🚀",
               color: "from-red-500/20 to-pink-500/20",
             },
-          ].map((persona, index) => (
+          ].map((persona, _index) => (
             <motion.div
               key={persona.title}
               className={`bg-gradient-to-br ${persona.color} backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 text-center`}

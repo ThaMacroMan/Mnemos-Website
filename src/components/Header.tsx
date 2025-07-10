@@ -156,7 +156,7 @@ export default function Header() {
                             {section.title}
                           </h3>
                         </div>
-                        {section.items.map((item) => (
+                        {section.items.map(item => (
                           <Link
                             key={item.href}
                             href={item.href}
@@ -234,7 +234,7 @@ export default function Header() {
                             {section.title}
                           </h3>
                         </div>
-                        {section.items.map((item) => (
+                        {section.items.map(item => (
                           <Link
                             key={item.href}
                             href={item.href}
@@ -353,7 +353,7 @@ export default function Header() {
               <div className="text-sm font-semibold text-gray-400 px-4">
                 Learn
               </div>
-              {learnDropdown[0].items.map((item) => (
+              {learnDropdown[0].items.map(item => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -376,8 +376,8 @@ export default function Header() {
                 Build
               </div>
               {buildDropdown
-                .flatMap((section) => section.items)
-                .map((item) => (
+                .flatMap(section => section.items)
+                .map(item => (
                   <Link
                     key={item.href}
                     href={item.href}

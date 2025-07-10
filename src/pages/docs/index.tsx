@@ -164,7 +164,7 @@ export default function DocsIndex() {
                 time: "Priceless",
                 color: "from-yellow-500/20 to-orange-500/20",
               },
-            ].map((item, index) => (
+            ].map((item, _index) => (
               <motion.div
                 key={item.title}
                 className={`bg-gradient-to-br ${item.color} border border-gray-700/50 rounded-xl p-6`}
@@ -210,7 +210,7 @@ export default function DocsIndex() {
                 desc: "Build voting systems and community governance tools",
                 icon: "🏛️",
               },
-            ].map((item) => (
+            ].map(item => (
               <motion.div
                 key={item.title}
                 className="bg-gray-900/50 border border-gray-600/50 rounded-xl p-6 text-center opacity-70"

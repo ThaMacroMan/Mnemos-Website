@@ -31,7 +31,7 @@ function ReadingProgress() {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange((latest) => {
+    const unsubscribe = scrollYProgress.onChange(latest => {
       setShowScrollToTop(latest > 0.1);
     });
     return unsubscribe;
@@ -277,7 +277,7 @@ function NextSteps() {
       <div className="bg-gradient-to-r from-gray-800/50 to-gray-700/50 border border-gray-700/50 rounded-2xl p-8">
         <h3 className="text-2xl font-bold mb-6 text-center">🎯 What's Next?</h3>
         <div className="grid md:grid-cols-2 gap-6">
-          {nextSteps.map((step, index) => (
+          {nextSteps.map((step, _index) => (
             <motion.div
               key={step.href}
               whileHover={{ scale: 1.03, y: -5 }}
