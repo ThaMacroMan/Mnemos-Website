@@ -51,7 +51,7 @@ export default function Home() {
           className="text-6xl md:text-8xl font-extrabold tracking-tight mb-8 bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent"
           variants={fadeInUp}
         >
-          Build on Cardano with AI
+          Build on Cardano with AI and Mnemos
         </motion.h1>
 
         <motion.p
